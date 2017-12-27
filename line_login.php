@@ -19,7 +19,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 //セッション管理クラスをインスタンス化
 $session_factory = new \Aura\Session\SegmentFactory;
 //セッションのインスタンスを取得
-$session = $session_factory->newInstance($_COOKIE);
+$session = $session_factory->newInstance($_SESSION);
 //Segmentオブジェクトを取得 文字列は任意のものに変更
 $segment = $session->getSegment('Vendor\Package\ClassName');
 // CSRFトークン
