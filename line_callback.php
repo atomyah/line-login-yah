@@ -13,7 +13,9 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 //GETリクエストのみ処理
-$unsafe = $_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'PUT' || $_SERVER['REQUEST_METHOD'] == 'DELETE';
+$unsafe = $_SERVER['REQUEST_METHOD'] == 'POST'
+       || $_SERVER['REQUEST_METHOD'] == 'PUT'
+       || $_SERVER['REQUEST_METHOD'] == 'DELETE';
 
 $session_factory = new \Aura\Session\SessionFactory;
 $session = $session_factory->newInstance($_COOKIE);
@@ -31,14 +33,14 @@ $callback = 'https://' . $_SERVER['HTTP_HOST'] . '/line_callback.php';
 // ログイン成功時はパラメータにcodeが付与付与されている
 if (isset($_GET['code'])) {
   // APIへのアクセストークンを取得するエンドポイント
-  $url = 'https://api.line.me/v2/token/oauth/accessToken';
+  $url = 'https://api.line.me/v2/oauth/accessToken';
   //データ
   $data = array(
-      'grant_type' => 'authorization_code',
-      'client_id' => getenv('LOGIN_CHANNEL_ID'),
-      'client_secret' => getenv('LOGIN_CHANNEL_SECRET'),
-      'code' => $_GET['code'],
-      'redirect_url' => $callback
+    'grant_type' => 'authorization_code',
+     'client_id' => getenv('LOGIN_CHANNEL_ID'),
+     'client_secret' => getenv('LOGIN_CHANNEL_SECRET'),
+     'code' => $_GET['code'],
+     'redirect_uri' => $callback
   );
   $data = http_build_query($data, '', '&');
   //ヘッダー
