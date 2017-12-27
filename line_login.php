@@ -27,7 +27,7 @@ $csrf_value = $session->getCsrfToken()->getValue();
 
 //コールバックURL
 $callback = urlencode('https://' . $_SERVER['HTTP_HOST'] . '/line_callback.php');
-$url = 'https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=' . getenv('LOGIN_CHANNEL_ID') . '&redirect_url=' . $callback . '&state=' . $csrf_value;
+$url = 'https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=' . getenv('LOGIN_CHANNEL_ID') . '&redirect_uri=' . $callback . '&state=' . $csrf_value;
 //リンクを出力
 echo '<a href=' . $url . '><button class="contact">LINEログイン</button></a>';
 
