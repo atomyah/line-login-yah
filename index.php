@@ -30,9 +30,11 @@ foreach ($events as $event) {
     error_log('not text message has come');
     continue;
   }
-  //オウム返し parrotting
-//  $bot->replyText($event->getReplyToken(), $event->getText());
-  replyTextMessage($bot, $event->getReplyToken(), $event->getText());
+  //LINE Loginページへのリンクを返信
+  replyMultiMessage($bot, $event->getReplyToken(), 
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('以後の処理はホームページで可能です。以下のURLにアクセスしてください。'),
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('https://' . $_SERVER['HTTP_HOST'] . '/line_login.php')
+          );
 }
 
 

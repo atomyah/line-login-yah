@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'LINE\\' => array($vendorDir . '/linecorp/line-bot-sdk/src'),
+    'Aura\\Session\\_Config\\' => array($vendorDir . '/aura/session/config'),
+    'Aura\\Session\\' => array($vendorDir . '/aura/session/src'),
 );
